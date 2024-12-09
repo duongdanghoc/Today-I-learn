@@ -1,0 +1,219 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #292524;
+  color: #fafaf9;
+  font-family: "Sono", sans-serif;
+  padding: 40px;
+}
+.hidden {
+  display: none !important;
+}
+/*MAIN LAYOUT*/
+.header {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container {
+  max-width: 1500px; /*ko nên dùng width vì nếu cửa sổ không 
+  đủ sẽ gây ra trải nghiệM khó chịu cho người dùng*/
+  margin: 0 auto;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 250px 1fr; /*fr tự động kéo dãn với phần còn lại*/
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*ELEMENT LAYOUT*/
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/*img ở ben trong logo*/
+.logo img {
+  width: 68px;
+  height: 68px;
+}
+h1 {
+  font-size: 42px;
+  text-transform: uppercase;
+  font-family: "Coiny", sans-serif;
+  color: #fafaf9;
+  margin-top: 6px;
+  line-height: 1;
+}
+.category {
+  margin-bottom: 16px;
+}
+.fact {
+  font-size: 20px;
+  font-family: "Sono", sans-serif;
+  color: #fafaf9;
+  background-color: #44403c;
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  /*letter-spacing: khoảng cách giữa các chữ trong 1 từ*/
+  letter-spacing: -1px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+}
+/*Ghi đè khi width <= 1200px
+ Mỗi khi flex box được bật các item sẽ 
+ được đặt cạnh nhau tự động vì 
+ flex-direction được đặt mặc đỊnh là row
+
+*/
+@media (max-width: 1200px) {
+  .fact {
+    /*đổi flex-direction*/
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+.tag {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: "Coiny", sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  border-radius: 100px; /*cứ cho hết mức có thể cũng được*/
+}
+.vote-buttons {
+  margin-left: auto; /*luôn tạo ra margin cần thiết để
+  nút luôn nằm ở bên phải*/
+  flex-shrink: 0; /*flex shrink xác định khả năng co lại khi
+  container ko đủ. Giá trị mặc định là 1*/
+  display: flex;
+  gap: 8px;
+}
+.vote-buttons button {
+  border: none;
+  background-color: #78716c;
+  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  color: inherit; /*giá trị của color được thừa kế*/
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.vote-buttons button:hover {
+  background-color: #292524;
+}
+
+ul {
+  list-style: none;
+}
+.source:link,
+.source:link {
+  color: #a8a29e;
+  text-decoration: none; /*xoá dấu underline*/
+  margin-left: 12px;
+  transition: 0.3s; /*thời gian chuyển giữa các animation*/
+}
+.source:hover,
+.source:active {
+  color: #3b82f6;
+}
+.btn {
+  border: none;
+  font-family: "Coiny", sans-serif;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 17px;
+  padding: 16px 0 13px;
+  background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
+  color: inherit; /*bắt nó thừa hưởng thuộc tính nào đó*/
+  transition: 0.3s;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: scale(110%) rotate(-2deg);
+}
+
+.btn-large {
+  font-size: 20px;
+  padding: 20px 32px 17px;
+}
+.btn-all-categories {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.btn-category {
+  width: 100%;
+  background-image: none; /*phải xoá đi thì backgroud-color
+  mới hiện ra được*/
+}
+.fact-form {
+  background-color: #44403c;
+  margin-bottom: 40px;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 16px;
+}
+
+.fact-form input,
+.fact-form select {
+  width: 220px;
+  background-color: #78716c;
+  border: none;
+  border-radius: 100px;
+  padding: 16px;
+  font-size: 18px;
+  color: inherit;
+  font-family: inherit;
+}
+.fact-form input::placeholder {
+  color: #a8a29e;
+}
+
+.fact-form input:first-child {
+  /*chỉ chọn child đầu tiên*/
+  flex-grow: 1; /*chỉ định vùng không gian trống của vùng chứa
+  nếu có sẽ được gán cho first-child*/
+}
+
+.fact-form span {
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: 18px;
+}
+
+@media (max-width: 1000px) {
+  body {
+    padding: 32px 48px;
+  }
+  .fact-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .fact-form input,
+  .fact-form select {
+    width: auto;
+  }
+}
